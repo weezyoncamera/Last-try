@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Special Valentine's Day Question</title>
+<style>
+  body {
+    font-family: 'Comic Neue', cursive;
+    text-align: center;
+    padding-top: 50px;
+    background: pink;
+    background-image: url('GLITTER_BACKGROUND_IMAGE_URL');
+    background-size: cover;
+    color: white;
+  }
+  .valentine-question h2 {
+    color: black; /* Ensures text is black */
+  }
+  .valentine-question {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Ensure vertical alignment */
+    margin-bottom: 20px;
+  }
+  .answer-button {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    background-color: #ddd; /* Default background to ensure visibility */
+    color: #000; /* Default text color for visibility */
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
+  .yes {
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+  }
+  .no {
+    background-color: #f44336; /* Red background */
+    color: white; /* White text */
+  }
+  .cute-image {
+    margin-top: 20px;
+    max-width: 100%; /* Ensures image is not too large */
+    max-height: 300px; /* Optional: Adjust based on your preference */
+  }
+</style>
+</head>
+<body>
+<div class="valentine-question">
+  <h2>Jasmine, will you be my valentine?</h2>
+  <button class="answer-button yes" onclick="yesClicked()">Yes</button>
+  <button class="answer-button no" id="noButton" onclick="noClicked()">No</button>
+  <img src="https://i.pinimg.com/originals/76/a4/3d/76a43d771002177090db48598b4aa198.gif" alt="Cute Cat" class="cute-image">
+</div>
+
+<script>
+let noClickCount = 0;
+const noButton = document.getElementById('noButton');
+const yesButton = document.getElementsByClassName('yes')[0];
+
+function yesClicked() {
+  alert('Yay!');
+}
+
+function noClicked() {
+  noClickCount++;
+  if (noClickCount < 10) {
+    const noResponses = [
+      'Are you sure?',
+      'Oh, come on!',
+      'Just a little yes?',
+      'Pretty please?',
+      'It will be fun!',
+      'Yay! I knew it!',
+      'Really?',
+      'Think again!',
+      'Sure about that?',
+      'Last chance...'
+    ];
+    noButton.textContent = noResponses[noClickCount - 1];
+    yesButton.style.transform = `scale(${1 + noClickCount * 0.1})`;
+    noButton.style.transform = `scale(${1 - noClickCount * 0.05})`;
+  } else {
+    noButton.textContent = "Ok whatever u suck";
+    noButton.disabled = true;
+    yesButton.style.transform = `scale(1)`;
+  }
+}
+</script>
+</body>
+</html>
